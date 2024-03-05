@@ -8,8 +8,8 @@ git clone https://github.com/jeromeguillaume/kong-plugin-bedrock-api-consumer-au
 ```
 1) Create a ConfigMap
 ```sh
-cd ./kong/plugins/bedrock-api-consumer-auth
-kubectl create configmap create configmap bedrock-api-consumer-auth --from-file=./bedrock-api-consumer-auth
+cd ./kong/plugins
+kubectl create configmap bedrock-api-consumer-auth --from-file=./bedrock-api-consumer-auth
 ```
 2) Re-deploy the Kong Gateway by using Helm and configure the Chart with the `bedrock-api-consumer-auth` Kong plugin and the `untrusted_lua_sandbox_requires`
 - Include the following parameters in the Helm values.yaml:

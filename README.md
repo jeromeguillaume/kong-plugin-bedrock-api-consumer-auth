@@ -1,7 +1,7 @@
-# kong plugin: token exchange Bedrock 'API Consumer Auth'
-Kong plugin `bedrock-api-consumer-auth` does a token Exchange with the Bedrock 'API Consumer Auth'
+# kong plugin: Do a token exchange with the Bedrock 'API Consumer Auth'
+The `bedrock-api-consumer-auth` Kong plugin does a token Exchange with the Bedrock 'API Consumer Auth'. It works for Kong EE and Konnect.
 
-## How deploy the `bedrock-api-consumer-auth` Kong plugin
+## How deploy the `bedrock-api-consumer-auth` Kong plugin in KIC (King Ingress Controller)
 1) Git clone this repository
 ```sh
 git clone https://github.com/jeromeguillaume/kong-plugin-bedrock-api-consumer-auth.git

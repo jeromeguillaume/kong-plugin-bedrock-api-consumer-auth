@@ -1,5 +1,5 @@
-# kong plugin: Do a token exchange with the Bedrock 'API Consumer Auth'
-The `bedrock-api-consumer-auth` Kong plugin does a token Exchange by calling the Bedrock API Consumer Auth'. It works for Kong EE and Konnect.
+# kong plugin: Do a token exchange with the Bedrock - API Consumer Auth
+The `bedrock-api-consumer-auth` Kong plugin does a token Exchange by calling the Bedrock - API Consumer Auth. It works for Kong EE and Konnect.
 
 ## How deploy the `bedrock-api-consumer-auth` Kong plugin in KIC (Kong Ingress Controller)
 1) Git clone this repository
@@ -36,7 +36,7 @@ helm -n kong install kong kong/ingress -f ./values.yaml
 helm -n kong upgrade kong kong/ingress -f ./values.yaml
 ```
 4) Create a `bedrock-api-consumer-auth` KongPlugin
-- Change the config properties: Basic AuthN (`basic_auth_user`, `basic_auth_password`) and the URI of Bedrock API (`uri_environment` and `uri_tenant`)
+- Change the config properties: Basic AuthN (`basic_auth_user`, `basic_auth_password`) and the URI of Bedrock - API (`uri_environment` and `uri_tenant`)
 ```yaml
  apiVersion: configuration.konghq.com/v1
  kind: KongPlugin
@@ -80,7 +80,7 @@ content-type: application/json
 Server: kong/3.5.0.3-enterprise-edition
 ...
 ```
-- In case of error (wrong Customer Code, Invalid call of the Bedrock API Consumer Auth, etc.) the `bedrock-api-consumer-auth` Kong plugin sends a `401` Error, for instance:
+- In case of error (wrong Customer Code, Invalid call of the Bedrock - API Consumer Auth, etc.) the `bedrock-api-consumer-auth` Kong plugin sends a `401` Error, for instance:
 ```
 HTTP/2 401 Unauthorized
 Content-Type: application/json
@@ -95,10 +95,10 @@ Server: kong/3.5.0.3-enterprise-edition
 ## `bedrock-api-consumer-auth` configuration reference
 |FORM PARAMETER                 |DEFAULT          |DESCRIPTION                                                 |
 |:------------------------------|:----------------|:-----------------------------------------------------------|
-|config.basic_auth_user         |N/A              |`Basic Auth` User name for calling Bedrock API Consumer Auth|
-|config.basic_auth_password     |N/A              |`Basic Auth` Password for calling Bedrock API Consumer Auth|
+|config.basic_auth_user         |N/A              |`Basic Auth` User name for calling Bedrock - API Consumer Auth|
+|config.basic_auth_password     |N/A              |`Basic Auth` Password for calling Bedrock - API Consumer Auth|
 |config.customercode_header_name|x-customer-code  |Header name for passing Customer Code. If the Consumer doesn't provide it, the `Àuthorization Bearer` is retrieved and the plugin looks for `consumer` claim|
 |config.debug_mode              |false            |If `true` add debug message in the kong log and in the Consumer's error message|
-|config.ssl_verify              |false            |If `true` verify the Bedrock API certificate and please add the certificate in the `lua_ssl_trusted_certificate` Kong setting|
-|config.uri_environment         |api-consumer-auth|The URI of Bedrock API Consumer Auth is [https://uri_environment.uri_tenant](https://uri_environment.uri_tenant)|
-|config.uri_tenant              |bedrock.tech     |The URI of Bedrock API Consumer Auth is [https://uri_environment.uri_tenant](https://uri_environment.uri_tenant)|
+|config.ssl_verify              |false            |If `true` verify the Bedrock - API Consumer Auth certificate and please add the certificate in the `lua_ssl_trusted_certificate` Kong setting|
+|config.uri_environment         |api-consumer-auth|The URI of Bedrock - API Consumer Auth is [https://uri_environment.uri_tenant](https://uri_environment.uri_tenant)|
+|config.uri_tenant              |bedrock.tech     |The URI of Bedrock - API Consumer Auth is [https://uri_environment.uri_tenant](https://uri_environment.uri_tenant)|

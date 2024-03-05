@@ -11,13 +11,16 @@ git clone https://github.com/jeromeguillaume/kong-plugin-bedrock-api-consumer-au
 cd ./kong/plugins/bedrock-api-consumer-auth
 kubectl create configmap create configmap bedrock-api-consumer-auth --from-file=./bedrock-api-consumer-auth
 ```
-2) Re-deploy the Kong Gateway with Helm and the `bedrock-api-consumer-auth` Kong plugin
+2) Re-deploy the Kong Gateway by using Helm and configure the Chart with the `bedrock-api-consumer-auth` Kong plugin and the `untrusted_lua_sandbox_requires`
 - Include the following parameters in the Helm values.yaml:
 ```yaml
 gateway:
   image:
     repository: kong/kong-gateway
   ...  
+  env:
+    ...
+    untrusted_lua_sandbox_requires: resty.http,cjson.safe,kong.tools.utils
   plugins:
     configMaps:
     - pluginName: bedrock-api-consumer-auth
@@ -33,7 +36,7 @@ helm install kong kong/ingress -f ./values.yaml
 helm upgrade kong kong/ingress -f ./values.yaml
 ```
 4) Create a `bedrock-api-consumer-auth` KongPlugin
-- Check the config properties: Basic AuthN (`basic_auth_user`, `basic_auth_password`) and the URI of Bedrock API (`uri_environment` and `uri_tenant`)
+- Change the config properties: Basic AuthN (`basic_auth_user`, `basic_auth_password`) and the URI of Bedrock API (`uri_environment` and `uri_tenant`)
 ```yaml
  apiVersion: configuration.konghq.com/v1
  kind: KongPlugin

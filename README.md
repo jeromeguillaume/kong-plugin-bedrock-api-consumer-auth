@@ -61,9 +61,9 @@ helm -n kong upgrade kong kong/ingress -f ./values.yaml
 ## `bedrock-api-consumer-auth` configuration reference
 |FORM PARAMETER                 |DEFAULT          |DESCRIPTION                                                                                                           |
 |:------------------------------|:----------------|:---------------------------------------------------------------------------------------------------------------------|
-|config.basic_auth_user         | N/A             |`Basic Auth` User name for calling Bedrock API Consumer Auth                                                          |
-|config.basic_auth_password     | N/A             |`Basic Auth` Passwor for calling Bedrock API Consumer Auth                                                            |
-|config.customercode_header_name|x-customer-code  |Header name for passing Customer Code                                                                                 |
+|config.basic_auth_user         |N/A              |`Basic Auth` User name for calling Bedrock API Consumer Auth                                                          |
+|config.basic_auth_password     |N/A              |`Basic Auth` Password for calling Bedrock API Consumer Auth                                                           |
+|config.customercode_header_name|x-customer-code  |Header name for passing Customer Code. If the Consumer doesn't provide it, the `Àuthorization Bearer` is retrieved    |
 |config.debug_mode              |false            |If `true` add debug message in the kong log and in the Consumer's error message                                       |
 |ssl_verify                     |false            |If `true` verify the Bedrock API certificate and add the certificate in the `lua_ssl_trusted_certificate` Kong setting|
 |uri_environment                |api-consumer-auth|Bedrock API Environment                                                                                               |

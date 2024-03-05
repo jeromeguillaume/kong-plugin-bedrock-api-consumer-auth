@@ -1,5 +1,5 @@
 # kong plugin: Do a token exchange with the Bedrock 'API Consumer Auth'
-The `bedrock-api-consumer-auth` Kong plugin does a token Exchange by calling the Bedrock 'API Consumer Auth'. It works for Kong EE and Konnect.
+The `bedrock-api-consumer-auth` Kong plugin does a token Exchange by calling the Bedrock API Consumer Auth'. It works for Kong EE and Konnect.
 
 ## How deploy the `bedrock-api-consumer-auth` Kong plugin in KIC (Kong Ingress Controller)
 1) Git clone this repository
@@ -51,9 +51,20 @@ helm -n kong upgrade kong kong/ingress -f ./values.yaml
    uri_environment: api-consumer-auth
    uri_tenant: bedrock.tech
 ```
-5) Add `nonprod-bedrock-api-consumer-auth` Kong Plugin on the Service
+5) Add `nonprod-bedrock-api-consumer-auth` Kong Plugin to the Service
 ```yaml
  annotations:
    ...
    konghq.com/plugins: nonprod-bedrock-api-consumer-auth
 ```
+
+## `bedrock-api-consumer-auth` configuration reference
+|FORM PARAMETER                 |DEFAULT          |DESCRIPTION                                                                                                           |
+|:------------------------------|:----------------|:---------------------------------------------------------------------------------------------------------------------|
+|config.basic_auth_user         | N/A             |User name for `Basic Auth` on Bedrock API Consumer Auth                                                               |
+|config.basic_auth_password     | N/A             |Password for `Basic Auth` on Bedrock API Consumer Auth                                                                |
+|config.customercode_header_name|x-customer-code  |Header name for passing Customer Code                                                                                 |
+|config.debug_mode              |false            |If `true` add debug message in the kong log and in the Consumer's error message                                       |
+|ssl_verify                     |false            |If `true` verify the Bedrock API certificate and add the certificate in the `lua_ssl_trusted_certificate` Kong setting|
+|uri_environment                |api-consumer-auth|Bedrock API Environment                                                                                               |
+|uri_tenant                     |bedrock.tech     |Bedrock API Tenant                                                                                                    |

@@ -10,9 +10,9 @@ return {
         fields = {
           { basic_auth_user = { type = "string", required = true }, },
           { basic_auth_password = { type = "string", required = true }, },
-          { customercode_header_name = { type = "string", required = true, default="x-customer-code"}, },
-          { debug_mode = { type = "boolean", required = true, default=false}, },
-          { ssl_verify = { type = "boolean", required = true, default=false}, },
+          { customercode_header_name = { type = "string", required = false, default="x-customer-code"}, },
+          { debug_mode = { type = "boolean", required = false, default=false}, },
+          { ssl_verify = { type = "boolean", required = false, default=false}, },
           { uri_environment = { type = "string", required = true, default="api-consumer-auth"}, },
           { uri_tenant = { type = "string", required = true, default="bedrock.tech"}, },
         },

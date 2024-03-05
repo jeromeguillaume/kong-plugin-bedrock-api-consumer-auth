@@ -17,7 +17,6 @@ kubectl create configmap create configmap bedrock-api-consumer-auth --from-file=
 gateway:
   image:
     repository: kong/kong-gateway
-    tag: "3.5"
   ...  
   plugins:
     configMaps:
@@ -25,7 +24,12 @@ gateway:
       name: bedrock-api-consumer-auth
     ...
 ```
-- Execute the Helm re-deployment:
+- Execute the Helm deployment:
+  - Install:
+```sh
+helm install kong kong/ingress -f ./values.yaml
+```
+  - Upgrade:
 ```sh
 helm upgrade kong kong/ingress -f ./values.yaml
 ```

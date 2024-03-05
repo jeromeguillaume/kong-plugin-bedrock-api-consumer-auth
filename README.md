@@ -25,16 +25,15 @@ gateway:
     ...
 ```
 - Execute the Helm deployment:
-  - Install:
+  - Install or Upgrade
 ```sh
 helm install kong kong/ingress -f ./values.yaml
 ```
-  - Upgrade:
 ```sh
 helm upgrade kong kong/ingress -f ./values.yaml
 ```
 4) Create a `bedrock-api-consumer-auth` KongPlugin
-- Check the config properties: Basic AuthN(`basic_auth_user`, `basic_auth_password`) and the URI of Bedrock API (`uri_environment` and `uri_tenant`)
+- Check the config properties: Basic AuthN (`basic_auth_user`, `basic_auth_password`) and the URI of Bedrock API (`uri_environment` and `uri_tenant`)
 ```yaml
  apiVersion: configuration.konghq.com/v1
  kind: KongPlugin
@@ -49,7 +48,7 @@ helm upgrade kong kong/ingress -f ./values.yaml
    uri_environment: api-consumer-auth
    uri_tenant: bedrock.tech
 ```
-5) Add the `nonprod-bedrock-api-consumer-auth` Kong Plugin on the Service
+5) Add `nonprod-bedrock-api-consumer-auth` Kong Plugin on the Service
 ```yaml
  annotations:
    ...
